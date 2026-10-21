@@ -42,7 +42,7 @@
 <!-- Your community, and what your classifier sorts posts into. Three or four
      sentences. -->
 
-
+TakeMeter sorts posts from r/movies, a public subreddit that can be read without signing in, into four labels: `analysis`, `hot_take`, `reaction` and `question`. The labels came from what I saw while reading posts, and questions and recommendation requests turned out to be about a quarter of my sample, so the starter's three labels were not enough. No stretch goals planned.
 
 ---
 
@@ -54,35 +54,111 @@
      The decision rule is worth a point on its own and it's the thing most
      people leave out. Every taxonomy has a hardest boundary. Name yours. -->
 
-### `label_one`
+### `analysis`
 
-**Definition:**
-
-**Example 1:**
->
-
-**Example 2:**
->
-
-### `label_two`
-
-**Definition:**
+**Definition:** Primarily makes a claim whose reasoning depends on specific, checkable details, such as scenes, quotes, dates, or plot events; if removing the details the argument relies on leaves the argument essentially intact, those details do not qualify as support.
 
 **Example 1:**
+
+> Small detail I noticed watching Ghost (1990) yesterday despite it being the 50th viewing
 >
+> It's likely to be unintentional, but who knows maybe it was a deliberate parallel?
+>
+> In the beginning, Sam helps out to gather the angel statue from the window by swinging his body like a pendulum to bounce it back.
+>
+> At the very end, Carl's death is caused by a chain _swinging like a pendulum_ and bouncing _into a window_...
 
 **Example 2:**
+
+> Children of Men (2006) was the first dystopian film I ever really watched. It was set in 2027…
 >
+> The detail is flawless - London had only won the bid for the 2012 Olympics the year before its release and yet Theo is wearing a London 2012 Olympic jumper in the scene at Jasper's House.
+>
+> All other futuristic/dystopian films showed a world of technological advance well beyond what was realistic when you look back but not Children of Men.
+
+### `hot_take`
+
+**Definition:** Primarily argues for a judgment or opinion about a movie without an argument that depends on a specific, checkable detail.
+
+**Example 1:**
+
+> Rewatched "In Good Company" with Dennis Quaid, Topher Grace, and a young ScarJo and how enjoyable to watch a movie that uses honest, real life experiences and responses instead of contrived, over the top melodrama.
+>
+> Rewatching it was such a treat. Its so nice to see a movie so honest and normal. There's no over the top bad guy conniving, or annoying misunderstandings nobody talks about. People say how they feel, and react like real, normal people I have in my life. Scarjo and topher's relationship plays out so honest that its almost unexpected (I'm trying really hard not to spoil it). Quaid plays a football good guy "dad" that never says anything overly smart but clearly is, and leads with good, clean intentions and doing what's right, like a real person we all know. The movie generates different emotions but remains an enjoyable, GOOD film, that never once has you say "like that would happen".
+
+**Example 2:**
+
+> Here Comes The Boom (2012) The perfect family/sports movie?
+>
+> Here Comes the Boom keeps aging like wine in my rewatches. I had no love for Kevin James before seeing this in 2012 and I've not really followed him after but this one movie really strikes such a great balance of feel-good, action, comedy, and inspiration.
+>
+> It's of course not a perfect movie and it could be nitpicked to death but in the category of PG family-friendly sports movies I think it might be one of the best.
+>
+> It has such positive core messaging about..
+>
+> - Being passionate
+> - About inspiring others
+> - Not giving up
+> - Education
+> - The Arts
+> - Immigrants
+>
+> The performances are all very fun, even the non actor MMA people do a good job.
+>
+> It is genuinely thrilling fight scenes that feel brutal enough to feel real but not so brutal it can be enjoyed by most of the entire family.
+>
+> Its pacing is good… and come on… best use of a Holly Holy in film.
+
+### `reaction`
+
+**Definition:** Primarily expresses the writer's personal feelings or experience in response to a movie, scene, trailer, or movie-related event.
+
+**Example 1:**
+
+> Rewatched Walter Mitty for the umpteenth time.
+>
+> I just rewatched The Secret Life of Walter Mitty again for the however many times. So glad I own this one. Such a brilliant feel good movie. Need more movies like this.
+>
+> Now unfortunately on the soundtrack, the Mitty Mix of Space Oddity is not to be found on any of the streaming services due to some change on licensing rights. Sad!
+
+**Example 2:**
+
+> In The Blink of An Eye
+>
+> I loved it. The 'expert' reviewers gave it negative reviews. Has any one else seen it and thought, "wow, this is good, I'm am moved by the storyline, I'm going to watch out again" which is me. It is on Disney+ Hulu, not sure if it is on any other streaming services. Just want to know if others felt it was good enough to watch twice or more?
+
+### `question`
+
+**Definition:** Primarily seeks information, explanations, opinions, or recommendations from the community rather than mainly expressing a personal reaction or arguing a position.
+
+**Example 1:**
+
+> movies like prisoners or the whisper man
+>
+> my favoritee genre right now is movies about serial killers/abduction/mysteries. I just watched the whisper man and really liked that and prisoners is another one i LOVE. I need more movies like these ones- if they dont have the abduction or killer aspect, any dark, psychological, folksy or like suburbia themed horror movie will do.
+
+**Example 2:**
+
+> A Nightmare Before Christmas
+>
+> Am I the only one curious on what goes on behind the doors that take you to Thanksgiving Land and St. Patrick's Day Land? I mean, Christmas we see. Easter we can figure out. But Thanksgiving Land? Are there people constantly gorging themselves? And in St. Patrick's Day Land, is it one big drunken party?
 
 ### The hardest boundary
 
-**Which two labels:**
+**Which two labels:** `reaction` vs `hot_take`. Example: the Free Guy post.
 
-**The decision rule I used every time:**
+> Free Guy
+>
+> I just took a trip overseas in which I ended up watching a total of 5 movies on the planes that I hadn't seen before, and although Free Guy was probably the best one I watched, I wouldn't say it's great. Although it's rather amusing, especially Ryan Reynolds' performance, I don't think the plot works too well.
+
+It reports a viewing experience and also judges the movie's merits (the plot "doesn't work too well"), so both labels are defensible.
+
 <!-- e.g. "If the post names a specific checkable fact, it's `analysis`, even
      if the tone is heated." -->
 
+**The decision rule I used every time:** Label by the post's primary purpose, not its final sentence. For `analysis` versus `hot_take`, ask whether the argument depends on specific, checkable details. For `reaction` versus `hot_take`, distinguish personal feelings from judgments about the movie; if both remain equally prominent, default to `hot_take`.
 
+**Second boundary, `question` vs `analysis`:** If the body of the post argues from a specific detail and the question is only a closing prompt, label it `analysis`; if the post mainly exists to get an answer, label it `question`.
 
 ---
 
@@ -98,12 +174,12 @@ Say so plainly — the disclosure is required, not penalised. -->
 
 **Counts per label:**
 
-| Label | Count | Share |
-|---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-| **Total** |  | 100% |
+| Label     | Count | Share |
+| --------- | ----- | ----- |
+|           |       |       |
+|           |       |       |
+|           |       |       |
+| **Total** |       | 100%  |
 
 **Three hard cases**
 
@@ -111,25 +187,28 @@ Say so plainly — the disclosure is required, not penalised. -->
      been, and what you chose. These are worth more than the easy 190. -->
 
 **1.**
-> *The post:*
+
+> _The post:_
 >
-> *Could have been:*
+> _Could have been:_
 >
-> *I chose, because:*
+> _I chose, because:_
 
 **2.**
-> *The post:*
+
+> _The post:_
 >
-> *Could have been:*
+> _Could have been:_
 >
-> *I chose, because:*
+> _I chose, because:_
 
 **3.**
-> *The post:*
+
+> _The post:_
 >
-> *Could have been:*
+> _Could have been:_
 >
-> *I chose, because:*
+> _I chose, because:_
 
 ---
 
@@ -147,8 +226,6 @@ Say so plainly — the disclosure is required, not penalised. -->
 split. If a label had fewer than about 8 in test, say so — it explains a lot
 of next unit's variance. -->
 
-
-
 ---
 
 ## How I Used AI
@@ -162,15 +239,15 @@ of next unit's variance. -->
 
 **Moment 1**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- _What I asked for:_
+- _What came back:_
+- _What I changed:_
 
 **Moment 2**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- _What I asked for:_
+- _What came back:_
+- _What I changed:_
 
 **Pre-labelling disclosure:**
 
@@ -186,22 +263,22 @@ of next unit's variance. -->
 <!-- Both models on the same posts. `python baseline.py --trained results.json`
      prints this table for you. -->
 
-| Measure | Baseline | Trained | Difference |
-|---|---|---|---|
-| Overall accuracy |  |  |  |
-| Macro F1 |  |  |  |
-| F1 — `label_one` |  |  |  |
-| F1 — `label_two` |  |  |  |
+| Measure          | Baseline | Trained | Difference |
+| ---------------- | -------- | ------- | ---------- |
+| Overall accuracy |          |         |            |
+| Macro F1         |          |         |            |
+| F1 — `label_one` |          |         |            |
+| F1 — `label_two` |          |         |            |
 
 **What I predicted before I looked:**
+
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
      prediction made afterwards isn't one. -->
 
 **What the gap actually means:**
+
 <!-- If the baseline matched your trained model, your fine-tuning added
      nothing — and that is a real finding, not a failure. Say it plainly. -->
-
-
 
 ---
 
@@ -211,30 +288,29 @@ of next unit's variance. -->
      spread table; the Target and Verdict columns are yours. -->
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
-|---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| --------- | ------ | ------- | ------ | --------- | ------- |
+| 1.        |        |         |        |           |         |
+| 2.        |        |         |        |           |         |
+| 3.        |        |         |        |           |         |
+| 4.        |        |         |        |           |         |
+| 5.        |        |         |        |           |         |
 
 ### Confusion matrix
 
 <!-- ⚠️ TYPED AS A MARKDOWN TABLE. The notebook prints one ready to paste.
      An image of a matrix earns nothing. -->
 
-| true \ predicted |  |  |  |
-|---|---|---|---|
-| **** |  |  |  |
-| **** |  |  |  |
-| **** |  |  |  |
+| true \ predicted |     |     |     |
+| ---------------- | --- | --- | --- |
+| \*\*\*\*         |     |     |     |
+| \*\*\*\*         |     |     |     |
+| \*\*\*\*         |     |     |     |
 
 **My biggest off-diagonal number, and what it means:**
+
 <!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
      direction. "7 real analysis posts were called hot_take and only 3 went the
      other way" is a direction, not just an error rate. -->
-
-
 
 ---
 
@@ -243,13 +319,13 @@ of next unit's variance. -->
 <!-- MET or MISSED against LAST UNIT's target. The target has to hold across
      all three seeds, not turn up sometimes. -->
 
-| # | Criterion | Target | Verdict | How I decided |
-|---|---|---|---|---|
-| 1 |  |  |  |  |
-| 2 |  |  |  |  |
-| 3 |  |  |  |  |
-| 4 |  |  |  |  |
-| 5 |  |  |  |  |
+| #   | Criterion | Target | Verdict | How I decided |
+| --- | --------- | ------ | ------- | ------------- |
+| 1   |           |        |         |               |
+| 2   |           |        |         |               |
+| 3   |           |        |         |               |
+| 4   |           |        |         |               |
+| 5   |           |        |         |               |
 
 **Diagnoses**
 
@@ -262,8 +338,6 @@ of next unit's variance. -->
      have that can tell a LABELLING problem from a MODEL problem, and this
      section is graded on whether you used it that way. -->
 
-
-
 ---
 
 ## Agreement Report
@@ -274,7 +348,7 @@ of next unit's variance. -->
      data/staff_taxonomy.md, not your own — so every argument below is made
      from those definitions and those decision rules. -->
 
-**Agreement rate:** ___ / 30 = ___%
+**Agreement rate:** **_ / 30 = _**%
 
 <!-- Nobody grades this number. A 60% who argues every disagreement from the
      stated rules beats a 95% who wrote "staff was right" nine times. Several
@@ -297,26 +371,26 @@ of next unit's variance. -->
      what you did across your own 200. -->
 
 **1.**
-> *The post:*
+
+> _The post:_
 >
-> *Staff said / I said:*
+> _Staff said / I said:_
 >
-> *My call, and why:*
+> _My call, and why:_
 >
-> *Which pile:*
+> _Which pile:_
 
 **2.**
-> *The post:*
+
+> _The post:_
 >
-> *Staff said / I said:*
+> _Staff said / I said:_
 >
-> *My call, and why:*
+> _My call, and why:_
 >
-> *Which pile:*
+> _Which pile:_
 
 **What the pattern in my disagreements tells me:**
-
-
 
 ---
 
@@ -329,19 +403,17 @@ of next unit's variance. -->
 ### Run Log — After
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
-|---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| --------- | ------ | ------- | ------ | --------- | ------- |
+| 1.        |        |         |        |           |         |
+| 2.        |        |         |        |           |         |
+| 3.        |        |         |        |           |         |
+| 4.        |        |         |        |           |         |
+| 5.        |        |         |        |           |         |
 
 **Did it help, and how do I know:**
 
 <!-- If it didn't, say so. Relabelling that didn't help is a genuinely
      interesting result and earns full credit. -->
-
-
 
 ---
 
@@ -349,13 +421,10 @@ of next unit's variance. -->
 
 <!-- For each criterion still missed: what you'd do, and why you stopped. -->
 
-
-
 **The gap between what I meant my labels to capture and what the model
 learned:**
+
 <!-- Two sentences. Your confusion matrix is the evidence. -->
-
-
 
 <!-- ═════════════════════════════════════════════════════════════════════
 
