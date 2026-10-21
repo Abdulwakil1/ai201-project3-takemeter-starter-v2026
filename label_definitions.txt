@@ -5,6 +5,14 @@
 #
 # Delete the examples below and put yours in.
 
-analysis: makes an argument backed by a specific, checkable fact
-hot_take: a confident claim with no support offered
-reaction: an immediate response to something that just happened
+
+analysis: Primarily makes a claim whose reasoning depends on specific, checkable details, such as scenes, quotes, dates, or plot events; if removing the details the argument relies on leaves the argument essentially intact, those details do not qualify as support.
+hot_take: Primarily argues for a judgment or opinion about a movie without an argument that depends on a specific, checkable detail.
+reaction: Primarily expresses the writer’s personal feelings or experience in response to a movie, scene, trailer, or movie-related event.
+question: Primarily seeks information, explanations, opinions, or recommendations from the community rather than mainly expressing a personal reaction or arguing a position.
+
+
+
+
+
+
