@@ -87,9 +87,9 @@ When I relabel 20 posts selected from `labels.csv` using random seed 42, without
 
 ## 5. Confusion between `reaction` and `hot_take`
 
-For each of the three random seeds, no more than **50% of posts whose true label is `reaction` may be incorrectly predicted as `hot_take`** on the held-out test set.
+For each of the three random seeds, no more than 50% of posts whose true label is `reaction` may be incorrectly predicted as `hot_take` on the held-out test set.
 
-**Why this target:** My hardest labeling boundary is `reaction` versus `hot_take`, because a post can express personal feelings while also judging a movie's quality. I want to limit how often the classifier confuses these two categories. I chose 50% as a measurable starting threshold, while recognizing that the small test set may make this percentage fluctuate across seeds.
+**Why this target:** My hardest labeling boundary is `reaction` versus `hot_take`, because a post can express personal feelings while also judging a movie's quality. I chose 50% as the maximum acceptable error rate because I want at least half of true `reaction` posts to avoid being misclassified as `hot_take`.However, I recognize that the test set is small: if `reaction` accounts for about 18% of my 200 posts, I expect only about 5–6 true `reaction` posts in the test set. One misclassification could change the error rate by approximately 17–20 percentage points. If a seed's test set contains no true `reaction` posts, this criterion is not evaluable for that seed and will be reported as such, not counted as a pass.
 
 ---
 
