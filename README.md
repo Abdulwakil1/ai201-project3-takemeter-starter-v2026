@@ -164,67 +164,75 @@ It reports a viewing experience and also judges the movie's merits (the plot "do
 
 ## The Dataset
 
-<!-- Where you collected from, how you labelled, your counts, and three hard
-     cases. -->
+**Where the posts came from:** r/movies (public, no login), whole text posts copied by hand from the New, Top and Discussion/Question/Recommendation/Review views, one post per row, across many threads. I skipped image-only, link-only and trivia/announcement posts because they fit none of my four labels.
 
-**Where the posts came from:**
+**How I labelled them:** 20 posts were labelled cold (no AI, no tools), marked `cold`. The other 81 rows were pre-labelled by an AI tool using my four definitions; I read every one and could change it, and they are marked `AI-assisted` in the note column.
 
-**How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
-Say so plainly — the disclosure is required, not penalised. -->
+**Why 101 rows, not 200:** I ran out of fresh r/movies posts (the New view kept repeating) and ran short of time. This is under the 150-row floor; I will add rows during the extension.
 
 **Counts per label:**
 
 | Label     | Count | Share |
 | --------- | ----- | ----- |
-|           |       |       |
-|           |       |       |
-|           |       |       |
-| **Total** |       | 100%  |
+| question  | 33    | 33%   |
+| hot_take  | 32    | 32%   |
+| reaction  | 18    | 18%   |
+| analysis  | 18    | 18%   |
+| **Total** | 101   | 100%  |
 
 **Three hard cases**
-
-<!-- Any post that made you pause: what it was, which two labels it could have
-     been, and what you chose. These are worth more than the easy 190. -->
 
 **1.**
 
 > _The post:_
 >
-> _Could have been:_
+> > I'm forty-one and just watched True Romance for the first time. Wow!
+> >
+> > This movie is pure fun, nonstop energy that keeps you invested. I've always enjoyed Christian Slater and felt like he should have been a bigger name, and this has got to be one of his best roles. I never cared for Patricia Arquette too much but she won me over here with her spunky portrayal as Alabama. She is too cool when she faces off against Gandolfini and keeps laughing hysterically despite getting her butt kicked. The comedy and action is gold. The scenes with Gary Oldman as the dreadlocked pimp and Walken and Hopper exchanging insults with eggplants and cantaloupes, are incredible. How many times have you watched this movie?
 >
-> _I chose, because:_
+> _Could have been:_ `reaction` or `hot_take`
+>
+> _I chose `reaction`, because:_ The post primarily expresses the writer's personal enjoyment of the movie, using phrases such as “pure fun” and “keeps you invested.” Although it mentions specific scenes and actors, these details mainly illustrate the writer's enthusiasm rather than support a central argument that depends on them. The closing question invites others to share their viewing experiences, but the post is primarily a personal reaction.
 
 **2.**
 
 > _The post:_
 >
-> _Could have been:_
+> > Demolition (2015)-Question about the start of the movie
+> >
+> > Trigger warning: Self harm
+> > Spoiler for the first 5 minutes of the movie incoming. The event that kicks off the movie is the death of the main character's wife in a car accident. When I watched the scene for the first time I assumed that the wife had crashed the car on purpose and she had successfully killed herself. This was actually the scene that prompted me to watch the movie, I saw it on social media. But after the circumstances surrounding the crash were barely discussed in the movie, I was wondering if the movie's intention was to portray the crash as intentional or as an accident. Maybe I misunderstood.
+> > The way the wife looks at the main character while looking away from the road for way too long makes me think she crashed on purpose and was intending on killing herself, perhaps even killing both of them.
 >
-> _I chose, because:_
+> _Could have been:_ `analysis` or `question`
+>
+> _I chose `analysis`, because:_ The writer develops an interpretation of the car crash by pointing to a specific scene detail: the wife looks at her husband while looking away from the road. The writer uses this observation to support the possibility that the crash was intentional. Although the post asks whether this interpretation was correct, the question follows a detail-based argument, so analysis is the better fit under my decision rule.
 
 **3.**
 
 > _The post:_
 >
-> _Could have been:_
+> > Robert Altman's "The Player": Curious commentary on Hollywood with a stellar cast: Yay or nay for you?
+> >
+> > To be honest, this is one of my least favorite Altman movies. The commentary could have been more biting, Tim Robbins' character was deeply unlikable and not the easiest character to follow. Greta Scacchi was gorgeous in it but it's a thin role. I wish Whoopi Goldberg had a bigger part, they don't really do much with her considering she's the detective on the case.
 >
-> _I chose, because:_
+> _Could have been:_ `reaction` or `hot_take`
+>
+> _I first labelled it `reaction` (cold); on reading I judge `hot_take` because:_ The post primarily argues that the movie is disappointing, criticizing its commentary, the main character, and the limited use of Whoopi Goldberg's character. Although “To be honest” introduces a personal opinion, the post goes beyond expressing a feeling by making several judgments about the movie's quality and specific creative choices. The opinions are the main purpose, rather than a description of the writer's emotional experience, so hot_take is the better fit.
+
+_Note:_ My cold label for this post in `labels.csv` is `reaction`. On rereading under my definitions it is closer to `hot_take`. I left the original cold label unchanged so the cold set stays honest, and it may show up in my consistency check (criterion 4) and my unit 6 diagnosis.
 
 ---
 
 ## The Training Run
 
-<!-- Your starting model, your settings, and anything you changed and why. -->
+**Base model:** distilbert-base-uncased
 
-**Base model:**
+**Settings:** 3 epochs, learning rate 2e-5, batch size 16, 128 tokens per post, seed 42. Trained on cpu (Intel Mac, x86_64), torch 2.2.2, 8 GB RAM.
 
-**Settings:** <!-- epochs, learning rate, batch size, seed -->
+**Anything I changed from the defaults, and why:** Nothing. I used the notebook defaults. I did not retrain or adjust settings after seeing results, because that would be tuning against the test split.
 
-**Anything I changed from the defaults, and why:**
-
-**Split sizes:** <!-- train / val / test, and per-label counts in the test
-split. If a label had fewer than about 8 in test, say so — it explains a lot
-of next unit's variance. -->
+**Split sizes:** train 69 / val 16 / test 16 (101 rows total). Test per label: analysis 3, hot_take 5, reaction 3, question 5. All four labels are under about 8 in test, so I expect scores to jump a lot between seeds.
 
 ---
 
@@ -239,17 +247,17 @@ of next unit's variance. -->
 
 **Moment 1**
 
-- _What I asked for:_
-- _What came back:_
-- _What I changed:_
+- _What I asked for:_ I asked an AI to attack my four label definitions: could a second person apply each sentence without guessing? I rewrote them over several rounds.
+- _What came back:_ It flagged that "facts or evidence" was a loophole in `analysis` and `hot_take`, because a long review that gives reasons can feel like evidence without containing a checkable fact. It also pointed out that `reaction` was circular and that my tie-break repeated the same question instead of settling it.
+- _What I changed:_ I rewrote `analysis` so the argument must depend on specific, checkable details, and added a deletion test (if removing those details leaves the argument intact, they don't count). I made `hot_take` explicitly cover detailed reviews with nothing checkable, and I set the `reaction` vs `hot_take` tie-break to default to `hot_take`.
 
 **Moment 2**
 
-- _What I asked for:_
-- _What came back:_
-- _What I changed:_
+- _What I asked for:_ I asked an AI to write eight posts that sit on the boundaries between my labels, without telling me the intended labels, so I could stress-test the definitions.
+- _What came back:_ Eight short posts. I classified them quickly and three didn't match what the AI intended. Two were posts that mention a scene but make no argument from it, and one was an evaluation that sounded personal.
+- _What I changed:_ I reread those three against my definitions and decided I had rushed, not that the wording was wrong, so I kept the definitions. It also showed me my boundary rule had no answer for a post that argues from a detail and then asks a question, so I added a second tie-break for `question` vs `analysis`.
 
-**Pre-labelling disclosure:**
+**Pre-labelling disclosure:** 20 rows were labelled cold, with no AI and no tools, and are marked `cold`. The other 81 rows were pre-labelled by an AI tool using my four definitions, with a short reason for each. I read every post and could change any label, and each of these rows is marked `AI-assisted` in the note column. I also used an AI tool to help build the CSV (a short script that writes the rows with correct quoting).
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
