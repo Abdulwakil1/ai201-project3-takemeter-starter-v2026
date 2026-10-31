@@ -273,20 +273,23 @@ _Note:_ My cold label for this post in `labels.csv` is `reaction`. On rereading 
 
 | Measure          | Baseline | Trained | Difference |
 | ---------------- | -------- | ------- | ---------- |
-| Overall accuracy |          |         |            |
-| Macro F1         |          |         |            |
-| F1 — `label_one` |          |         |            |
-| F1 — `label_two` |          |         |            |
+| Overall accuracy | 0.188    | 0.312   | +0.125     |
+| Macro F1         | 0.079    | 0.119   | +0.040     |
+| F1 — `analysis`  | 0.000    | 0.000   | +0.000     |
+| F1 — `hot_take`  | 0.000    | 0.000   | +0.000     |
+| F1 — `question`  | 0.000    | 0.476   | +0.476     |
+| F1 — `reaction`  | 0.316    | 0.000   | -0.316     |
 
 **What I predicted before I looked:**
 
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
      prediction made afterwards isn't one. -->
 
+I expect the baseline to do best on `question` because questions often have recognizable wording and a clear purpose. I expect it to do worst on `reaction` because personal reactions can overlap with `hot_take`, making the distinction between expressing feelings and judging a movie more difficult.
+
 **What the gap actually means:**
 
-<!-- If the baseline matched your trained model, your fine-tuning added
-     nothing — and that is a real finding, not a failure. Say it plainly. -->
+The trained model scored higher than the baseline, with 31.2% accuracy compared with 18.8%, or approximately 2 additional correctly classified posts out of 16. However, both models performed poorly, and the difference is only one or two posts away from the 25% reference point for four equally likely labels. The trained model received a nonzero F1 score only for `question`, while the baseline received a nonzero F1 score only for `reaction`. The trained model may have predicted `question` frequently rather than learning to distinguish that category reliably. The baseline may also have struggled with the detailed, multi-part label definitions because it was not fine-tuned on my examples. The small training dataset and limited test examples per label (3–5) are additional possible reasons for the weak results, but more evidence is needed to determine their impact.
 
 ---
 

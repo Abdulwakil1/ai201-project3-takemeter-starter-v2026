@@ -1,0 +1,120 @@
+{
+  "model": "facebook/bart-large-mnli",
+  "n": 16,
+  "seed": 42,
+  "held_out": true,
+  "used_definitions": true,
+  "scores": {
+    "n": 16,
+    "accuracy": 0.1875,
+    "f1_macro": 0.07894736842105263,
+    "per_label": {
+      "analysis": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 3
+      },
+      "hot_take": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 5
+      },
+      "question": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 5
+      },
+      "reaction": {
+        "precision": 0.1875,
+        "recall": 1.0,
+        "f1": 0.3157894736842105,
+        "support": 3
+      }
+    }
+  },
+  "predictions": [
+    {
+      "text": "The Shining Hit Closer to Home Than I Expected\nI\u2019ve always heard about it, seen the \u201cHERES JOHNNY\u201d and scene with Danny rounding the corner on the tricycle and covering his eyes, but honestly was not expecting it to be as scary as it was, and frankly as fascinatingly triggering as it was. I\u2019m a 21 year old boy, who was once a little brown floppy haired only child, largely unsocialized with no friends in an unstable home life, haunted by nightmares and general fear, with a neurotic mother I felt safe with but also unsure of, and a \u201conly happy when he\u2019s drunk\u201c alcoholic father with anger issues that I frankly was afraid of/uncomfortable with, who was also once a brown floppy haired boy haunted by an unstable home life and trauma he won\u2019t talk about but tries to outrun. I know this sounds melodramatic, and my situation of course wasn't nearly as extreme as the film, but I genuinely can\u2019t think of a movie that made me think about and face my trauma like this one, which is why its effectively scary/intimidating in a way that no other movie I\u2019ve seen has been for me.\n\nIt brings all those feelings that I used to and still live with to an extent back to the surface, the underlying fear of what could be around the corner when you\u2019re alone, \u201cwill mom or dad hurt each other?, or \u201cwill one of them hurt me by accident or on purpose?\u201c \u201cwas the paranormal nightmare from when I was 4-5 I still remember real or just an incredibly vivid dream?\u201c. Like I said, I know this is dramatic, but The Shining told me to break the cycle, and overcome the darkness that may try to eat at you as effectively as any therapy session I\u2019ve been in. I was expecting it to get creepy, but was really not expecting the feelings it gave me to be so familiar, quite impressive.",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Bodhi from Point Break essentially acts as the ultimate archetype for the modern, toxic tech bro CEO.\nOk so this is one of my favorite over the top guilty pleasures. Its one of those so bad that's good films. Keanu Reeves may have totally sucked in this movie but wildly entertaining because he is, giving it his all in every scene. And Gary Busey is at his usual bonkers performance. But the late Patrick Swayze hit the nail in his portrayal of Bodhi, the ultimate Surfer dude. But for some reason, Bodhi reminds me of a tech bro, albait, much cooler version. It makes me wonder if this film was a major inspiration for every tech bro out there.\n\nIf you look past the 1991 bleach-blonde hair and the surfboards, Bodhi isn't just a surfer; he\u2019s a disruptor running a high-stakes startup with a cult-like workplace culture. Modern tech bros don't just want to sell software; they want to \"change the world\" and \"break the status quo.\" Bodhi views his bank robberies the exact same way. He explicitly tells Johnny Utah that they aren't robbing banks for the money, they are doing it to protest against a system that kills the human spirit. It is the ultimate form of pseudo-philosophical corporate branding. This film is an exercise in how the spirit of the 60's radicalism died.\n\nBodhi is deeply into a specific brand of spirituality, biohacking, and extreme lifestyle optimization. He treats surfing the \"50-Year Storm\" the way a Silicon Valley founder treats an ayahuasca retreat or a grueling ultra-marathon. It\u2019s a performative pursuit of \"enlightenment\" used to justify incredibly reckless, self-serving behavior. Perhaps it just the self centered focus on living his own life free of constraints. Bodhi robbing banks does not bring the system any closer to its knees. Its not like he is out there building insurgent networks and logistical pipelines of arms for sympathizers to resist the system. Nope, for him the ultimate act of resistance is riding a super-wave, LOL.\n\nLike a tech founder who burns through millions of venture capital dollars while protecting their own shares, Bodhi talks a big game about ultimate freedom but happily lets others pay the price. When the data starts leaking (or in his case, when the FBI closes in), he doesn't pivot safely. He doubles down, pushes his \"employees\" into increasingly dangerous situations, and ultimately leaves his ride-or-die team to take the fall.\n\nMuch like Steve Jobs or Elizabeth Holmes, Bodhi possesses a magnetic, cult-like charisma. He creates a \"reality distortion field\" where his followers willingly risk their lives and freedom because they want to be close to his vision. He says lines like \"If you want the ultimate freedom, you've got to be willing to pay the ultimate price\". That could easily be slapped onto a LinkedIn post about hustle culture.\n\nMakes me want to imagine a version where Bodhi wouldn't be chasing waves in Byron Bay; he\u2019d be living in Austin, running an unregulated crypto exchange or an AI startup, and convincing his developers to work 100-hour weeks for \"the collective evolution of humanity.\"",
+      "gold": "analysis",
+      "predicted": "reaction"
+    },
+    {
+      "text": "I just finished watching Ma and damn\n\u200bIt was genuinely so disturbing. Though i think some scnes did connect but some questions are still unanswere or maybe i just didnt watch it carefully to notice the answer about her daughter. And what was Maggie's mother's fault in what happened with sue ann? Also, i didnt know the correct fair to use ehe.",
+      "gold": "question",
+      "predicted": "reaction"
+    },
+    {
+      "text": "The last American virgin 1982\nDoes anybody know where I can watch this full movie. I can't find it anywhere online and I don't have a DVD player any longer. I can't believe it is not posted anywhere. One of my favorite movies in the 1980's although that ending was brutal. The music in this movie is fantastic. Please help me find a way to watch it. It is supposed to rain all weekend here and I would love to sit on the couch and stream this movie.",
+      "gold": "question",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Just watched Furiosa. Solid movie - but feels pretty underwhelming in comparison to Fury Road\n\nA prequel about Furiosa is not really something I was ever particularly interested in, even with how amazing her character was in Fury Road. But I'll never say no to more Mad Max-related stuff from George Miller. I went into Furiosa with reserved expectations just because of the insanely high bar Fury Road set as one of the greatest action movies of all time. I don't want to turn this into a Fury Road glaze session (although it's hard not to) but given that this is a very directly-connected prequel with a lot of the same characters, you pretty much\u00a0*have*\u00a0to bring it up.\n\nI think managing my expectations really did help a lot because Furiosa, while being a pretty well-made action movie, is nowhere near the level of Fury Road.\n\nIt's not\u00a0*bad*\u00a0or anything and there's a lot it does pretty well. Chris Hemsworth for example is amazing as Dementus and might in fact be my favourite villain of the entire franchise. It's such a fun performance - he really seems like he's having a blast. Tom Burke was very good as Praetorian Jack as well.\n\nThe movie also does a good job of deepening the worldbuilding from Fury Road and just...having more of an actual story.\n\nIn terms of the stunts and set pieces, while it doesn't really hit those Fury Road highs, there are some great ones here as well, especially the central War Rig sequence.\n\nNow in terms of what doesn't work:\n\n\\- The pacing is really wonky. The first hour is honestly a bit of a slog. I know we had to see Furiosa develop from a child into a capable warrior but this sequence really dragged for me. Fury Road's pacing is just pitch-perfect - that movie doesn't have a single wasted second, which I didn't really feel with Furiosa. It just jumps from one plot point to the next without letting the story breathe. It feels both rushed\u00a0*and*\u00a0sluggish at the same time. It's really missing that purity of focus that Fury Road had\n\n\\- There was a lot of CG in this one, which I don't mind in a vacuum, but a lot of it honestly looked pretty bad and stuck out like a sore thumb\n\n\\- Anya Taylor-Joy does a good facsimile of Charlize Theron's Furiosa voice, but ultimately she just doesn't have the sauce to come off as a badass warrior like Charlize does, even as a young version of the character. Charlize Theron just has this\u00a0*intensity*\u00a0that I never really saw with ATJ. In fact, I got almost\u00a0*nothing*\u00a0from this character. She's almost a complete blank slate\n\nSo overall, this doesn't really hold a candle to Fury Road (which, let's be fair, very few action films do) but is still a pretty solid movie on its own merits.",
+      "gold": "hot_take",
+      "predicted": "reaction"
+    },
+    {
+      "text": "The Road to El Dorado. What do you think happened after the movie concluded? Personally I think it ends tragically\u2026\nThe Road to El Dorado is one of my favorite animated films of all time. After a recent watch through\u2026it had me thinking. What is the likely continuation of the story? I don\u2019t see a scenario where they don\u2019t run into Cortes and end up as prisoners once again. Possible executed. I also feel it means bad news for Chel\u2026.who knows what all those dangerous men would do with her. I also feel Cortes would torture them until they gave up the location of El Dorado. I say Cortes finds a way and conquers the golden city. Dark? Yes\u2026. Most likely scenario? I think so.\n\nI\u2019m curious what everyone else\u2019s thoughts or take is on what likely happened after the credits rolled.",
+      "gold": "analysis",
+      "predicted": "reaction"
+    },
+    {
+      "text": "This one looks like a hot take to me: \nWhy do people love The Big Lebowski so much? I liked the plot, but the ending lost me.\n\nI finally watched it because I've seen it recommended so many times, and honestly, I don't get the hype. I actually liked the plot and was interested in where things were going, but the ending really ruined it for me. Why did that guy had to die in the end\ud83d\ude2d\n\nI get that it's supposed to be a comedy and maybe I'm taking it too seriously, but I genuinely want to understand what people enjoy about it. Is it the humour, the characters, the dialogue, or something I'm just missing? What makes it such a cult classic?",
+      "gold": "question",
+      "predicted": "reaction"
+    },
+    {
+      "text": "The Expendables Films - Missed opportunity for Action lovers!\nStallone, Dolph Lundgren, Statham, Jet Li and Mickey Rourke. I was on the CHUD forum and we rejoiced when we heard about the casting for The Expendables.\n\nBut the movie itself turned out to be mostly a dud. Boring action and it just didn't live up to the potential of the casting (Mickey Rourke had a strong emotional scene though).\n\nThe Expendables 2 is the best of the series for me. With a scenery stealing performance with Van Damme. Scott Adkins even has a fight with Jason Statham.\n\nThe Expendables 3 spends too much time for a newbie cast (who with the exception of Ronda Rousey) who I don't recognise.\n\nThe Expendables 4 has Iko Uwais and Tony Jaa. But even I have to admit this sucked.\n\nWhat do you all think?",
+      "gold": "hot_take",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Just watched Disclosure Day\nI must say I was really disappointed by it. The movie was meaningless and meandering. It feels like Spielberg is out of touch with the Zeitgeist on sci-fi storytelling. He fell back in his decades-old formula and failed spectacularly on delivering on both, a compelling alien expos\u00e9 and a touching personal/emotional saga.\n\nThe maddening simplicity of the details felt lazy and devoid of novelty. I kept asking myself at many points during the watching if I should change the channel and cut my losses. Spielberg sadly appears to think that he still has the same audience he had of The Close Encounter and ET. The sheer number of sci-fi movies and series on streaming services over the past 15 odd years has advanced the art of this genre far beyond that. Truly a lost opportunity by one of our generation\u2019s best movie makers.\n\nI would not recommend this movie even to a casual viewer. There are many better alternatives like Arrival, District 9, and Annihilation, among others to invest your time and well-earned money in.",
+      "gold": "hot_take",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Take on Irreplaceable You (2018 movie)\nSo, on a random Sunday, I came across this movie, and my decision to watch it was largely based on its poster. There was a cute girl sitting on the shoulders of a cute, clean-shaven guy with a very prominent dimple. What can I say? The poster did its job.\nGoing into the movie, I was expecting a deep, moving love story. Sam and Abbie had the history to make it one: childhood sweethearts who had been together for nearly two decades. But somehow, that love never quite translated onto the screen. Or maybe I just didn\u2019t get it.\nAbbie seemed determined to stay in control of Sam\u2019s life, deciding who he should date, when he should move on, and even who would take care of him. Sam, on the other hand, seemed rather lost when it came to Abbie. He didn\u2019t quite know how to support her or navigate what was happening between them.\nAnd then there was Dominic, the nurse, who somehow seemed more emotionally invested in Abbie than Sam did.\nBy the end, Sam\u2019s marriage proposal felt less like a declaration of love and more like an act of pity. Perhaps that wasn\u2019t the intention, but that\u2019s how it came across to me.\nFor a couple who had spent almost their entire lives together, I expected to\u00a0feel\u00a0their love. Unfortunately, I was left wondering whether I had missed something or whether the movie had.\nLet me know what you think of it.",
+      "gold": "hot_take",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Children of Men (2006) was the first dystopian film I ever really watched. It was set in 2027\u2026\n\nI love this film for so many reasons, the detail, the very realistic take on the future and the surrounding politics. I was probably 14 when I first watched it and I have probably watched it 30 times since then.\n\nThe detail is flawless - London had only won the bid for the 2012 Olympics the year before its release and yet Theo is wearing a London 2012 Olympic jumper in the scene at Jasper\u2019s House.\n\nAll other futuristic/dystopian films showed a world of technological advance well beyond what was realistic when you look back but not Children of Men.\n\nI\u2019m watching it again right now and despite the fact the fertility thing hasn\u2019t happened it just feels so honest and not that distant.\n\nDid anyone else love this film? I would easily put it in my top 10. Thoughts please!",
+      "gold": "analysis",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Just finished watching The Mist for the first time.. the ending WOW!\nIve been randomly watching zombie & world apocalypse movies lately. Ive been searching for good ones & came across The Mist.. this was really a good movie! The ending was sad as hell but a 10/10. This movie reminds me of Stranger Things somewhat.. anyone know any similar movies? Ive been trying to find good ones like this & Bird Box.",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Is Ghostbusters the original too scary for a 5 year old?\nBeen awhile since I've seen it. Remember it as more silly than spooky but there are some spooky themes. Would you recommend i watch or wait with my 5 year old? She's imaginative but seems to like scary stories and expressed interest in the film. Intense moments are extra intense, for example the fight with Scar and Simba had her jumping up and down yelling. Thanks in advance for your replies\n\nEdit: Ok we wont watch it. Cartoon might be a good start. Thank you to everyone in the comments.",
+      "gold": "question",
+      "predicted": "reaction"
+    },
+    {
+      "text": "2026 has been the best year for movies in more than a decade\nThis past weekend I saw La Bola Negra and the documentary You Can See Everything. Both great in a different way and probably contenders of best picture and directors. This year has been great in movies, of course it\u2019s the year of the Odyssey (personally I liked it but not for best picture or director). Project Hail Mary was also a big thing. The Drama and The Invite are also personally some of my favorites. Some people love Digger and Primetime. And we still have some big contenders to release: Wild Horse Nine, The debut and Artificial. Dune Part III is also coming, even though I have not seen a lot of hype lately.\nIt\u2019s been also a big year for Marvel, for Spiderman Brand New Day and Avengers Doomsday. Obsession and Backrooms were a bit hit for independent horror. Resident Evil, Other Mommy.\nIt\u2019s also had some fan acclaimed movies like Coyote v Acme or The Sheep Detectives. I wasn\u2019t fan of a lot of them like Wuthering Heights, Street Fighter, The Social Reckoning, Michael or Disclosure day, but they still have a lot of people going to the movies for. The new Godzilla or the new Hunger Games prequel.\nI haven\u2019t loved many of the animation movies but there are a lot of them this year: Super Mario Galaxy, Minions vs Monsters, Toy Story 5, Hoppers, Forgotten Island, Hexed or Wildwood.\nTo be honest I love to see it. I hope this makes the end of a recession and it keeps going up. More new original stories. The theaters were packed this weekend and I hope people keeps going.",
+      "gold": "hot_take",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Movies to watch after the loss of your mother\nLooking for movies and shows that are helpful and/or relatable to the grieving process of parent loss. My mom passed away 10 months ago, a few days before Christmas. I\u2019ve been really struggling since her death. I\u2019m hoping to find a few movies to help me feel less alone and maybe even be helpful to my grief.",
+      "gold": "question",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Chinese Take-away (or Takeaway)\nOh my gosh did I love this film!!!! I am a Ricardo Dar\u00edn junkie to the nth, and this one is among his top three or four, for sure. The ending was pat, and there were some implausibilities in the script, but I didn't care. It hit all the right notes. And one of the lines made me nearly falling on the floor laughing",
+      "gold": "reaction",
+      "predicted": "reaction"
+    }
+  ]
+}
