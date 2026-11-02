@@ -295,16 +295,13 @@ The trained model scored higher than the baseline, with 31.2% accuracy compared 
 
 ## Run Log — Before
 
-<!-- Five criteria across three seeds. The notebook's section 6 prints the
-     spread table; the Target and Verdict columns are yours. -->
-
-| Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
-| --------- | ------ | ------- | ------ | --------- | ------- |
-| 1.        |        |         |        |           |         |
-| 2.        |        |         |        |           |         |
-| 3.        |        |         |        |           |         |
-| 4.        |        |         |        |           |         |
-| 5.        |        |         |        |           |         |
+| Criterion                   | Target             | Seed 42   | Seed 7    | Seed 2024 | Verdict            |
+| --------------------------- | ------------------ | --------- | --------- | --------- | ------------------ |
+| 1. Accuracy per seed        | at least 70%       | 0.312     | 0.312     | 0.375     | MISSED             |
+| 2. Every label F1           | at least 0.50 each | see below | see below | see below | MISSED             |
+| 3. Largest label share      | at most 50%        | n/a       | n/a       | n/a       | MET (question 33%) |
+| 4. Relabel agreement        | at least 18 of 20  | n/a       | n/a       | n/a       | pending            |
+| 5. reaction called hot_take | at most 50%        | pending   | pending   | pending   | pending            |
 
 ### Confusion matrix
 
