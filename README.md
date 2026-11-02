@@ -295,30 +295,44 @@ The trained model scored higher than the baseline, with 31.2% accuracy compared 
 
 ## Run Log — Before
 
-| Criterion                   | Target             | Seed 42   | Seed 7    | Seed 2024 | Verdict            |
-| --------------------------- | ------------------ | --------- | --------- | --------- | ------------------ |
-| 1. Accuracy per seed        | at least 70%       | 0.312     | 0.312     | 0.375     | MISSED             |
-| 2. Every label F1           | at least 0.50 each | see below | see below | see below | MISSED             |
-| 3. Largest label share      | at most 50%        | n/a       | n/a       | n/a       | MET (question 33%) |
-| 4. Relabel agreement        | at least 18 of 20  | n/a       | n/a       | n/a       | pending            |
-| 5. reaction called hot_take | at most 50%        | pending   | pending   | pending   | pending            |
+| Criterion                   | Target             | Seed 42     | Seed 7        | Seed 2024   | Verdict            |
+| --------------------------- | ------------------ | ----------- | ------------- | ----------- | ------------------ |
+| 1. Accuracy per seed        | at least 70%       | 0.312       | 0.312         | 0.375       | MISSED             |
+| 2. Every label F1           | at least 0.50 each | see below   | see below     | see below   | MISSED             |
+| 3. Largest label share      | at most 50%        | n/a         | n/a           | n/a         | MET (question 33%) |
+| 4. Relabel agreement        | at least 18 of 20  | n/a         | n/a           | n/a         | pending            |
+| 5. reaction called hot_take | at most 50%        | 0 of 3 (0%) | 3 of 3 (100%) | 0 of 3 (0%) | MISSED             |
 
-### Confusion matrix
+**Per-label F1 (criterion 2):** order is the label, then seeds 42, 7, 2024.
+
+| Label      | Seed 42 | Seed 7 | Seed 2024 |
+| ---------- | ------- | ------ | --------- |
+| `analysis` | 0.000   | 0.000  | 0.000     |
+| `hot_take` | 0.000   | 0.476  | 0.333     |
+| `reaction` | 0.000   | 0.000  | 0.000     |
+| `question` | 0.476   | 0.000  | 0.500     |
+
+### Confusion matrix (seed 42)
 
 <!-- ⚠️ TYPED AS A MARKDOWN TABLE. The notebook prints one ready to paste.
      An image of a matrix earns nothing. -->
 
-| true \ predicted |     |     |     |
-| ---------------- | --- | --- | --- |
-| \*\*\*\*         |     |     |     |
-| \*\*\*\*         |     |     |     |
-| \*\*\*\*         |     |     |     |
+| true \ predicted | analysis | hot_take | reaction | question |
+| ---------------- | -------- | -------- | -------- | -------- |
+| **analysis**     | 0        | 0        | 0        | 3        |
+| **hot_take**     | 0        | 0        | 0        | 5        |
+| **reaction**     | 0        | 0        | 0        | 3        |
+| **question**     | 0        | 0        | 0        | 5        |
 
 **My biggest off-diagonal number, and what it means:**
 
 <!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
      direction. "7 real analysis posts were called hot_take and only 3 went the
      other way" is a direction, not just an error rate. -->
+
+In the seed 42 matrix, the largest off-diagonal count was 5 real `hot_take` posts predicted as `question`, but this reflects the model predicting `question` for all 16 test posts, not a confusion between those two labels in particular.
+
+In seed 7 the model predicted `hot_take` for all 16 test posts, the mirror of seed 42, and in seed 2024 it predicted `question` for 15 of 16 posts. The three seeds collapse onto a single label in different directions.
 
 ---
 
@@ -327,13 +341,13 @@ The trained model scored higher than the baseline, with 31.2% accuracy compared 
 <!-- MET or MISSED against LAST UNIT's target. The target has to hold across
      all three seeds, not turn up sometimes. -->
 
-| #   | Criterion | Target | Verdict | How I decided |
-| --- | --------- | ------ | ------- | ------------- |
-| 1   |           |        |         |               |
-| 2   |           |        |         |               |
-| 3   |           |        |         |               |
-| 4   |           |        |         |               |
-| 5   |           |        |         |               |
+| #   | Criterion                    | Target                                    | Verdict | How I decided                                                                                        |
+| --- | ---------------------------- | ----------------------------------------- | ------- | ---------------------------------------------------------------------------------------------------- |
+| 1   | Overall accuracy             | at least 70% on every seed                | MISSED  | 0.312, 0.312, 0.375 (seeds 42, 7, 2024); best seed is 0.375                                          |
+| 2   | Per-label F1                 | at least 0.50 for every label, every seed | MISSED  | `analysis` and `reaction` were 0.000 on all three seeds; see the per-label table in Run Log - Before |
+| 3   | Label balance                | no label above 50% of `labels.csv`        | MET     | largest label is `question` at 33 of 101 (33%)                                                       |
+| 4   | Labelling consistency        | at least 18 of 20 on the seed 42 relabel  | pending | relabel not done yet                                                                                 |
+| 5   | `reaction` called `hot_take` | at most 50% per seed                      | MISSED  | 0%, 100%, 0% on seeds 42, 7, 2024; fails on seed 7                                                   |
 
 **Diagnoses**
 
@@ -345,6 +359,8 @@ The trained model scored higher than the baseline, with 31.2% accuracy compared 
      ⚠️ Use your agreement report as evidence. It is the only instrument you
      have that can tell a LABELLING problem from a MODEL problem, and this
      section is graded on whether you used it that way. -->
+
+**Criterion 5:** Missed. True `reaction` posts called `hot_take` were 0 of 3 (seed 42), 3 of 3 (seed 7) and 0 of 3 (seed 2024), so the 50% limit failed on seed 7. This is not evidence about the `reaction`/`hot_take` boundary: each seed collapsed toward one label (`question` on seeds 42 and 2024, `hot_take` on seed 7), and the two passes only happen because `reaction` was never predicted at all. With 3 true `reaction` posts per test split, one post moves the rate by 33 points.
 
 ---
 
