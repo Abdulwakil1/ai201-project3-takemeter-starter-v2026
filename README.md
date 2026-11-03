@@ -372,14 +372,16 @@ In seed 7 the model predicted `hot_take` for all 16 test posts, the mirror of se
      data/staff_taxonomy.md, not your own — so every argument below is made
      from those definitions and those decision rules. -->
 
-**Agreement rate:** **_ / 30 = _**%
+**Agreement rate:** 29 / 30 = **97%**
 
 <!-- Nobody grades this number. A 60% who argues every disagreement from the
      stated rules beats a 95% who wrote "staff was right" nine times. Several
      of the 30 were chosen because they're genuinely ambiguous — you should be
      winning some of these. -->
 
-**Disagreements**
+I labelled all 30 posts using the staff taxonomy in `data/staff_taxonomy.md` without viewing the staff labels, and committed `my_staff_labels.csv` (commit `e5e7849`) before running `agreement.py` against them.
+
+### Disagreement 1 — sp_010
 
 <!-- Three lines each: the post, both labels, and who you think is right and
      why — grounded in the staff definitions you were both applying.
@@ -398,23 +400,25 @@ In seed 7 the model predicted `hot_take` for all 16 test posts, the mirror of se
 
 > _The post:_
 >
-> _Staff said / I said:_
->
-> _My call, and why:_
->
-> _Which pile:_
-
-**2.**
-
-> _The post:_
+> Three of us ran the same session on the same day, different shoes, within 10 seconds of each other over 5 miles. I'm not saying shoes do nothing, but whatever they do was smaller than the noise between three people.
 >
 > _Staff said / I said:_
 >
+> Staff: `analysis` / Me: `hot_take`
+>
 > _My call, and why:_
 >
+> Staff was right: `analysis`. Under rule 1, a specific, checkable fact must carry the argument rather than merely decorate an opinion. Here, the comparison between three runners wearing different shoes and finishing within 10 seconds over five miles provides the basis for the conclusion that the effect of the shoes was smaller than the variation between runners. Although three runners are a small sample and do not establish a scientifically conclusive result, the staff taxonomy does not require conclusive proof. The observation still supports the writer's argument, making `analysis` the stronger label.
+>
 > _Which pile:_
+>
+> (a) — The rule covered this case, but I applied it too loosely. I treated the small sample as a reason to call the post an unsupported opinion, rather than asking whether the observation carried the argument.
 
-**What the pattern in my disagreements tells me:**
+### What the pattern in my disagreements tells me
+
+There was one disagreement out of 30 posts, involving the `analysis` versus `hot_take` boundary. The disagreement shows that I need to distinguish between weak evidence and an unsupported claim. A small sample may limit the strength of a conclusion, but it does not automatically make the evidence decorative or irrelevant to the argument.
+
+The 97% agreement indicates strong consistency with the staff's three-label taxonomy on this particular set. However, it does not establish the consistency of my own four-label TakeMeter dataset, which uses different definitions and a different set of posts.
 
 ---
 
