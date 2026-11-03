@@ -408,17 +408,18 @@ I labelled all 30 posts using the staff taxonomy in `data/staff_taxonomy.md` wit
 >
 > _My call, and why:_
 >
-> Staff was right: `analysis`. Under rule 1, a specific, checkable fact must carry the argument rather than merely decorate an opinion. Here, the comparison between three runners wearing different shoes and finishing within 10 seconds over five miles provides the basis for the conclusion that the effect of the shoes was smaller than the variation between runners. Although three runners are a small sample and do not establish a scientifically conclusive result, the staff taxonomy does not require conclusive proof. The observation still supports the writer's argument, making `analysis` the stronger label.
+> Staff was right: `analysis`. Under rule 1, a specific, checkable fact must carry the argument rather than merely decorate an opinion. Here, the comparison between three runners wearing different shoes and finishing within 10 seconds over five miles provides the basis for the conclusion that the effect of the shoes was smaller than the variation between runners. Although three runners are a small sample and do not establish a scientifically conclusive result, the staff taxonomy does not require conclusive proof. The observation still supports the writer's argument, making `analysis` the stronger label. The post also has the same shape as sp_004 (a comparison, what it showed, an inference), with no claim stated first and then decorated.
 >
 > _Which pile:_
 >
-> (a) — The rule covered this case, but I applied it too loosely. I treated the small sample as a reason to call the post an unsupported opinion, rather than asking whether the observation carried the argument.
+> (a) The rule covered this case. I let the weakness of the evidence outweigh the question of whether it carried the argument.
 
 ### What the pattern in my disagreements tells me
 
 There was one disagreement out of 30 posts, involving the `analysis` versus `hot_take` boundary. The disagreement shows that I need to distinguish between weak evidence and an unsupported claim. A small sample may limit the strength of a conclusion, but it does not automatically make the evidence decorative or irrelevant to the argument.
 
 The 97% agreement indicates strong consistency with the staff's three-label taxonomy on this particular set. However, it does not establish the consistency of my own four-label TakeMeter dataset, which uses different definitions and a different set of posts.
+The same analysis versus hot_take boundary is what my own four-label data turns on, and 81 of my 101 rows were AI pre-labelled, so this miss is a warning about borderline analysis rows. Thirty posts is also a small sample, so 97% could be 90% or 100% on another set.
 
 ---
 
