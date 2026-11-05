@@ -300,7 +300,7 @@ The trained model scored higher than the baseline, with 31.2% accuracy compared 
 | 1. Accuracy per seed        | at least 70%       | 0.312       | 0.312         | 0.375       | MISSED             |
 | 2. Every label F1           | at least 0.50 each | see below   | see below     | see below   | MISSED             |
 | 3. Largest label share      | at most 50%        | n/a         | n/a           | n/a         | MET (question 33%) |
-| 4. Relabel agreement        | at least 18 of 20  | n/a         | n/a           | n/a         | pending            |
+| 4. Relabel agreement        | at least 18 of 20  | 8 of 20     | n/a           | n/a         | MISSED             |
 | 5. reaction called hot_take | at most 50%        | 0 of 3 (0%) | 3 of 3 (100%) | 0 of 3 (0%) | MISSED             |
 
 **Per-label F1 (criterion 2):** order is the label, then seeds 42, 7, 2024.
@@ -346,7 +346,7 @@ In seed 7 the model predicted `hot_take` for all 16 test posts, the mirror of se
 | 1   | Overall accuracy             | at least 70% on every seed                | MISSED  | 0.312, 0.312, 0.375 (seeds 42, 7, 2024); best seed is 0.375                                          |
 | 2   | Per-label F1                 | at least 0.50 for every label, every seed | MISSED  | `analysis` and `reaction` were 0.000 on all three seeds; see the per-label table in Run Log - Before |
 | 3   | Label balance                | no label above 50% of `labels.csv`        | MET     | largest label is `question` at 33 of 101 (33%)                                                       |
-| 4   | Labelling consistency        | at least 18 of 20 on the seed 42 relabel  | pending | relabel not done yet                                                                                 |
+| 4   | Labelling consistency        | at least 18 of 20 on the seed 42 relabel  | MISSED  | 8 of 20 (40%); 11 of 12 disagreements were AI-assisted rows                                          |
 | 5   | `reaction` called `hot_take` | at most 50% per seed                      | MISSED  | 0%, 100%, 0% on seeds 42, 7, 2024; fails on seed 7                                                   |
 
 **Diagnoses**
