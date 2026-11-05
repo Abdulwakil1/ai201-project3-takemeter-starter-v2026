@@ -360,7 +360,9 @@ In seed 7 the model predicted `hot_take` for all 16 test posts, the mirror of se
      have that can tell a LABELLING problem from a MODEL problem, and this
      section is graded on whether you used it that way. -->
 
-**Criterion 5:** Missed. True `reaction` posts called `hot_take` were 0 of 3 (seed 42), 3 of 3 (seed 7) and 0 of 3 (seed 2024), so the 50% limit failed on seed 7. This is not evidence about the `reaction`/`hot_take` boundary: each seed collapsed toward one label (`question` on seeds 42 and 2024, `hot_take` on seed 7), and the two passes only happen because `reaction` was never predicted at all. With 3 true `reaction` posts per test split, one post moves the rate by 33 points.
+**Criterion 5: Missed.** Seed 7 classified all three true `reaction` posts as `hot_take` (100%), while seeds 42 and 2024 never predicted `reaction`. Their passing results (0 of 3) therefore do not demonstrate that the model learned the distinction. The confusion matrices show that each seed collapsed toward a single label rather than reliably separating the categories.
+
+My relabeling exercise provides additional evidence of possible label inconsistency: five of the eight moves toward `reaction` were originally labeled `hot_take`. Overall, I disagreed with 11 of 15 AI-assisted posts, compared with one of five cold posts, although the cold comparison is very small. This is consistent with the missed consistency target in Criterion 4 (8 of 20), but it does not establish that AI assistance caused the disagreements. The 29/30 staff agreement came from a separate three-label dataset and does not resolve consistency in my own four-label data. With only 69 training posts, I cannot determine how much the model's results reflect label inconsistency versus insufficient training data.
 
 ---
 
