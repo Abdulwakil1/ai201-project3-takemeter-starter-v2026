@@ -435,24 +435,41 @@ The same analysis versus hot_take boundary is what my own four-label data turns 
 
 ## The Improvement
 
-**What I changed:**
+**What I changed:** I raised the number of training epochs from 3 to 10 in section 2 of the notebook (`EPOCHS = 3` to `EPOCHS = 10`). Nothing else changed: learning rate 2e-5, batch size 16, 128 tokens, the same `labels.csv`, the same 69/16/16 split, and the same three seeds (42, 7, 2024). I set `RUN_LABEL = "after"`, so the results are in `results_three_seeds_after.json` and the before run in `results_three_seeds_before.json` is untouched.
 
-**Which diagnosis pointed at it:**
+**Which diagnosis pointed at it:** My Criterion 1 and Criterion 2 diagnoses found that every seed collapsed to a single label and that training loss barely moved (about 1.36 to 1.35) after only 15 training steps on 69 posts. That pointed at too little training signal, which more epochs can address without new data. The Criterion 4 result (8 of 20) pointed at label inconsistency as a second possible cause, but I could not fix that within this change, so I chose the training setting as the one change.
 
 ### Run Log — After
 
-| Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
-| --------- | ------ | ------- | ------ | --------- | ------- |
-| 1.        |        |         |        |           |         |
-| 2.        |        |         |        |           |         |
-| 3.        |        |         |        |           |         |
-| 4.        |        |         |        |           |         |
-| 5.        |        |         |        |           |         |
+| Criterion                   | Target             | Seed 42           | Seed 7            | Seed 2024         | Verdict                             |
+| --------------------------- | ------------------ | ----------------- | ----------------- | ----------------- | ----------------------------------- |
+| 1. Accuracy per seed        | at least 70%       | 0.500             | 0.500             | 0.438             | MISSED                              |
+| 2. Every label F1           | at least 0.50 each | 0.000 on 2 labels | 0.000 on 2 labels | 0.000 on 2 labels | MISSED                              |
+| 3. Largest label share      | at most 50%        | n/a               | n/a               | n/a               | MET (unchanged, data not changed)   |
+| 4. Relabel agreement        | at least 18 of 20  | n/a               | n/a               | n/a               | MISSED (unchanged, not re-measured) |
+| 5. reaction called hot_take | at most 50%        | 2 of 3 (67%)      | 2 of 3 (67%)      | 2 of 3 (67%)      | MISSED                              |
+
+### Confusion matrix, after (seed 42)
+
+| true \ predicted | analysis | hot_take | reaction | question |
+| ---------------- | -------- | -------- | -------- | -------- |
+| **analysis**     | 0        | 1        | 0        | 2        |
+| **hot_take**     | 0        | 5        | 0        | 0        |
+| **reaction**     | 0        | 2        | 0        | 1        |
+| **question**     | 0        | 2        | 0        | 3        |
+
+The model now predicts two labels (`hot_take` and `question`) instead of one. The biggest off-diagonal count is 2, and it occurs three times: true `analysis` called `question`, true `reaction` called `hot_take`, and true `question` called `hot_take`. However, `analysis` and `reaction` were never predicted, so the zeros in their columns are not evidence that those pairs are separable.
 
 **Did it help, and how do I know:**
 
 <!-- If it didn't, say so. Relabelling that didn't help is a genuinely
      interesting result and earns full credit. -->
+
+Partly. Raising the epochs from 3 to 10 improved accuracy on every seed (0.312 to 0.500 on seeds 42 and 7, and 0.375 to 0.438 on seed 2024) and macro F1 rose from 0.119, 0.119 and 0.208 to 0.303, 0.303 and 0.268. The model also stopped collapsing onto a single label: every seed now predicts both `hot_take` and `question`, and each of those two labels reached an F1 of at least 0.50 on every seed (0.545 to 0.667 for `hot_take` and `question`). On seed 2024, validation loss fell from about 1.36 to 1.24 over the 10 epochs, instead of staying flat as in the 3-epoch run, which supports the diagnosis that the 3-epoch run had too little training signal.
+
+It did not change the outcome against my criteria. Criterion 1 is still missed (0.500, 0.500, 0.438 against 0.70) and Criterion 2 is still missed, because `analysis` and `reaction` were never predicted on any seed (F1 0.000). Criterion 5 got worse: 2 of 3 true `reaction` posts were predicted as `hot_take` on all three seeds (67%), so it now fails on every seed instead of one. Criteria 3 and 4 were not re-measured because the data did not change.
+
+I can say that more epochs helped the model learn the two larger labels, but not the two smallest (18 rows each, 3 test posts each). That fits the data-size and label-consistency explanations from my diagnoses, which this change could not test. The caveats are that the test split has only 16 posts (one post is 6.25 points) and each seed was run once, so a 6-point gain on seed 2024 is within one post of no change.
 
 ---
 
