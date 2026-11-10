@@ -257,7 +257,13 @@ _Note:_ My cold label for this post in `labels.csv` is `reaction`. On rereading 
 - _What came back:_ Eight short posts. I classified them quickly and three didn't match what the AI intended. Two were posts that mention a scene but make no argument from it, and one was an evaluation that sounded personal.
 - _What I changed:_ I reread those three against my definitions and decided I had rushed, not that the wording was wrong, so I kept the definitions. It also showed me my boundary rule had no answer for a post that argues from a detail and then asks a question, so I added a second tie-break for `question` vs `analysis`.
 
-**Pre-labelling disclosure:** 20 rows were labelled cold, with no AI and no tools, and are marked `cold`. The other 81 rows were pre-labelled by an AI tool using my four definitions, with a short reason for each. I read every post and could change any label, and each of these rows is marked `AI-assisted` in the note column. I also used an AI tool to help build the CSV (a short script that writes the rows with correct quoting).
+**Unit 6, Moment 3**
+
+- _What I asked for:_ I asked an AI to attack my verdict and diagnosis wording for each criterion, and to check whether my claims could be verified from the result files.
+- _What came back:_ It pointed out that I had only looked at the seed 42 confusion matrix, so "met on seed 42 only" was not a real verdict, and it suggested reading the other two seeds from `results_three_seeds_before.json`. It also flagged that the zero confusion between `reaction` and `hot_take` on seeds 42 and 2024 only happened because the model never predicted `reaction`.
+- _What I changed:_ I printed all three matrices myself and found that seed 7 predicted `hot_take` for all 16 test posts, so criterion 5 was missed, not met. I rewrote the diagnosis to say the passes proved nothing. I also dropped several claims I could not check against the files (for example, that I had been influenced by the staff taxonomy), and I verified every number in my README against the JSON and CSV files before keeping it.
+
+**Pre-labelling disclosure:** 20 rows were labelled cold, with no AI and no tools, and are marked `cold`. The other 81 rows were pre-labelled by an AI tool using my four definitions, with a short reason for each. I read every post and could change any label, and each of these rows is marked `AI-assisted` in the note column. I also used an AI tool to help build the CSV (a short script that writes the rows with correct quoting). In unit 6 an AI tool also helped me spot patterns in my errors (the cold vs AI-assisted split in the relabel, the pair table, and the collapse-to-one-label reading of the matrices); I checked each number against the files.
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
@@ -477,8 +483,29 @@ I can say that more epochs helped the model learn the two larger labels, but not
 
 <!-- For each criterion still missed: what you'd do, and why you stopped. -->
 
-**The gap between what I meant my labels to capture and what the model
-learned:**
+### Criteria 1 and 2 — Model performance
+
+After increasing the epochs from 3 to 10, accuracy was higher across all three seeds, changing from 0.312/0.312/0.375 to 0.500/0.500/0.438. Two seeds gained three correctly classified test posts, while the third gained one. However, none of the seeds reached the 70% accuracy target. Furthermore, `analysis` and `reaction` remained at 0.000 F1 across all three seeds because the model never predicted either label. The results show that the original single-label collapse was eliminated, but the model still did not successfully classify all four labels.
+
+One possible next step would be to collect more posts, particularly examples of `analysis` and `reaction`, and retrain the model. My Criterion 2 reasoning in `criteria.md` already identified the small number of examples per label as a limitation. I would also consider sampling older posts or other flairs to address the shortage of fresh posts. Adding more examples is a potential improvement, not a proven solution, because they would also need to be labeled consistently and represent the distinctions defined in my criteria. I stopped at this stage because the assignment allowed one improvement, which I used to increase the epochs from 3 to 10. Collecting and labeling more posts would require additional work, and I had already struggled to find enough fresh posts to reach the intended dataset size.
+
+### Criterion 3 — Label distribution
+
+This criterion was met. The largest label represented approximately 33% of `labels.csv`, remaining below the 50% limit. No additional correction was necessary for this criterion.
+
+### Criterion 4 — Labeling consistency
+
+My relabeling agreement was 8/20, well below the target of 18/20. Cold-labeled posts had 4/5 agreement, compared with 4/15 for AI-assisted posts. Cold rows agreed far more often, but only five cold rows were sampled, so this is a pattern rather than a conclusive result. Eight of the twelve disagreements involved a change toward `reaction`, with most of those originally labeled `hot_take`.
+
+A logical next step would be to reread the AI-assisted `hot_take` and `reaction` examples against my existing definitions and tie-break rule, then count how many labels would change if I applied those rules consistently. The results do not establish that AI assistance caused the disagreements, but they identify a pattern worth investigating. I stopped without making those additional labeling changes because they would have constituted another improvement beyond the one I had already made.
+
+### Criterion 5 — Reaction versus hot_take
+
+This criterion was missed because the model never predicted `reaction`. For every seed, 2 of the 3 true `reaction` test posts were predicted as `hot_take`, exceeding the permitted 50%. The remaining true `reaction` post was predicted as `question`. A logical next step would be to add more `reaction` rows and relabel borderline `reaction`/`hot_take` examples using the existing tie-break rule. This issue is related to the classification and labeling difficulties identified in Criteria 1, 2, and 4, although the results do not establish that addressing those issues alone would resolve Criterion 5.
+
+**The gap between what I meant my labels to capture and what the model learned:**
+
+I intended the model to distinguish four labels based on the purpose and characteristics of each post, including reasoning supported by specific, checkable details for `analysis` and personal feelings or experiences for `reaction`. After increasing the epochs to 10, the model predicted only `hot_take` and `question`; the confusion matrices for all three seeds show entirely zero-valued prediction columns for `analysis` and `reaction` (seed 42 is shown above; seeds 7 and 2024 are recorded in `results_three_seeds_after.json`). Given the small test set of 16 posts and the labeling inconsistencies identified during relabeling, I cannot determine whether insufficient training data, inconsistent labels, or the model's ability to learn these distinctions was the main limitation.
 
 <!-- Two sentences. Your confusion matrix is the evidence. -->
 
